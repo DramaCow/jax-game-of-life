@@ -40,8 +40,7 @@ def update(cells):
         [1, 0, 1],
         [1, 1, 1],
     ]), mode='valid').astype(int)
-    new_cells = jnp.where(cells, (counts == 2) | (counts == 3), (counts == 3))
-    return new_cells
+    return jnp.where(cells, (counts == 2) | (counts == 3), (counts == 3))
 
 @partial(jax.jit, static_argnums=(1,))
 def cells_to_image(cells, scale_factor=1):
