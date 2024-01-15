@@ -39,7 +39,7 @@ def update(cells):
         [1, 1, 1],
         [1, 0, 1],
         [1, 1, 1],
-    ]), mode='valid').astype(int)
+    ]), mode='valid')
     return jnp.where(cells, (counts == 2) | (counts == 3), (counts == 3))
 
 @partial(jax.jit, static_argnums=(1,))
