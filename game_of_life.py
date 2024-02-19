@@ -3,7 +3,7 @@ import jax
 import jax.numpy as jnp
 from jax.scipy.signal import convolve
 from functools import partial
-
+import numpy as np
 class Canvas(object):
     def __init__(self):
         self.screen = None
@@ -20,7 +20,7 @@ class Canvas(object):
         if self.clock is None:
             self.clock = pygame.time.Clock()
         
-        surface = pygame.surfarray.make_surface(image)                
+        surface = pygame.surfarray.make_surface(np.asarray(image))
 
         assert self.screen is not None
         self.screen.blit(surface, (0, 0))
